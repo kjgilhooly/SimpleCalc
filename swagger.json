@@ -34,6 +34,30 @@
   } ],
   "paths" : {
     "/add" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "pass two numbers to add",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "opX",
+          "required" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          }
+        }
+      },
       "post" : {
         "tags" : [ "users" ],
         "summary" : "add two numbers in body",
