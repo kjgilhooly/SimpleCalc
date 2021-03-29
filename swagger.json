@@ -28,6 +28,9 @@
   }, {
     "name" : "users",
     "description" : "end user functions"
+  }, {
+    "name" : "power users",
+    "description" : "one-step end user functions"
   } ],
   "paths" : {
     "/add" : {
@@ -152,7 +155,7 @@
     },
     "/calc" : {
       "get" : {
-        "tags" : [ "users" ],
+        "tags" : [ "power users" ],
         "summary" : "process two numbers",
         "parameters" : [ {
           "in" : "query",
