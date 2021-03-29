@@ -200,7 +200,7 @@
         }
       },
       "post" : {
-        "tags" : [ "users" ],
+        "tags" : [ "power users" ],
         "summary" : "processes two numbers",
         "requestBody" : {
           "content" : {
