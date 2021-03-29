@@ -1,0 +1,152 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/kjgilhooly/SimpleCalc/1.0.0"
+  }, {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/kjgilhooly/MyCalc/1.0.0"
+  } ],
+  "info" : {
+    "description" : "This is a simple four-function calculator API",
+    "version" : "1.0.0",
+    "title" : "Simple Calculator API",
+    "contact" : {
+      "email" : "kjg@xriva.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  }, {
+    "name" : "users",
+    "description" : "end user functions"
+  } ],
+  "paths" : {
+    "/calc" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "process two numbers",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "function",
+          "description" : "operation",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "add", "sub", "mul", "div" ]
+          }
+        }, {
+          "in" : "query",
+          "name" : "opX",
+          "description" : "one operator",
+          "required" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        }, {
+          "in" : "query",
+          "name" : "opY",
+          "description" : "other operator",
+          "required" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return results",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "processes two numbers",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return results",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "SimpleCalcRequest" : {
+        "type" : "object",
+        "required" : [ "function", "opX", "opY" ],
+        "properties" : {
+          "function" : {
+            "type" : "string",
+            "enum" : [ "add", "sub", "mul", "div" ]
+          },
+          "opX" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "opY" : {
+            "type" : "number",
+            "example" : 2
+          }
+        }
+      },
+      "SimpleCalcResponse" : {
+        "type" : "object",
+        "properties" : {
+          "function" : {
+            "type" : "string",
+            "example" : "add"
+          },
+          "opX" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "opY" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "result" : {
+            "type" : "number",
+            "example" : 42
+          }
+        }
+      }
+    }
+  }
+}
