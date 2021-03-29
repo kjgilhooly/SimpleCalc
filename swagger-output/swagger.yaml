@@ -13,6 +13,9 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/kjgilhooly/SimpleCalc/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "https://virtserver.swaggerhub.com/kjgilhooly/MyCalc/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
   } ],
@@ -73,6 +76,9 @@
                 }
               }
             }
+          },
+          "503" : {
+            "description" : "server error"
           }
         }
       },
@@ -98,6 +104,9 @@
                 }
               }
             }
+          },
+          "503" : {
+            "description" : "server error"
           }
         }
       }
