@@ -28,9 +28,41 @@
   }, {
     "name" : "users",
     "description" : "end user functions"
+  }, {
+    "name" : "power users",
+    "description" : "one-step end user functions"
   } ],
   "paths" : {
     "/add" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "pass two numbers to add",
+        "parameters" : [ {
+          "name" : "opX",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      },
       "post" : {
         "tags" : [ "users" ],
         "summary" : "add two numbers in body",
@@ -61,9 +93,38 @@
       }
     },
     "/sub" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "pass two numbers to subtract",
+        "parameters" : [ {
+          "name" : "opX",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return difference",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      },
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "subtract two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -75,7 +136,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return difference",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -91,9 +152,38 @@
       }
     },
     "/mul" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "pass two numbers to multiply",
+        "parameters" : [ {
+          "name" : "opX",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return product",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      },
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "multiply two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -105,7 +195,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return product",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -121,9 +211,38 @@
       }
     },
     "/div" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "pass two numbers to divide",
+        "parameters" : [ {
+          "name" : "opX",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return quotient",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      },
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "divide two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -135,7 +254,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return quotient",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -152,7 +271,7 @@
     },
     "/calc" : {
       "get" : {
-        "tags" : [ "users" ],
+        "tags" : [ "power users" ],
         "summary" : "process two numbers",
         "parameters" : [ {
           "name" : "function",
@@ -203,7 +322,7 @@
         }
       },
       "post" : {
-        "tags" : [ "users" ],
+        "tags" : [ "power users" ],
         "summary" : "processes two numbers",
         "requestBody" : {
           "content" : {
