@@ -30,6 +30,126 @@
     "description" : "end user functions"
   } ],
   "paths" : {
+    "/add" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "add two numbers in body",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcDataRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      }
+    },
+    "/sub" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "add two numbers in body",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcDataRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      }
+    },
+    "/mul" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "add two numbers in body",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcDataRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      }
+    },
+    "/div" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "add two numbers in body",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcDataRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return sum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "server error"
+          }
+        }
+      }
+    },
     "/calc" : {
       "get" : {
         "tags" : [ "users" ],
@@ -122,6 +242,20 @@
             "type" : "string",
             "enum" : [ "add", "sub", "mul", "div" ]
           },
+          "opX" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "opY" : {
+            "type" : "number",
+            "example" : 2
+          }
+        }
+      },
+      "SimpleCalcDataRequest" : {
+        "required" : [ "opX", "opY" ],
+        "type" : "object",
+        "properties" : {
           "opX" : {
             "type" : "number",
             "example" : 2
