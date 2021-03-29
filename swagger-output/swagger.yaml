@@ -1,0 +1,149 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Simple Calculator API",
+    "description" : "This is a simple four-function calculator API",
+    "contact" : {
+      "email" : "kjg@xriva.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/kjgilhooly/MyCalc/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  }, {
+    "name" : "users",
+    "description" : "end user functions"
+  } ],
+  "paths" : {
+    "/calc" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "process two numbers",
+        "parameters" : [ {
+          "name" : "function",
+          "in" : "query",
+          "description" : "operation",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "add", "sub", "mul", "div" ]
+          }
+        }, {
+          "name" : "opX",
+          "in" : "query",
+          "description" : "one operator",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        }, {
+          "name" : "opY",
+          "in" : "query",
+          "description" : "other operator",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "return results",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "processes two numbers",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SimpleCalcRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "return results",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SimpleCalcResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "SimpleCalcRequest" : {
+        "required" : [ "function", "opX", "opY" ],
+        "type" : "object",
+        "properties" : {
+          "function" : {
+            "type" : "string",
+            "enum" : [ "add", "sub", "mul", "div" ]
+          },
+          "opX" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "opY" : {
+            "type" : "number",
+            "example" : 2
+          }
+        }
+      },
+      "SimpleCalcResponse" : {
+        "type" : "object",
+        "properties" : {
+          "function" : {
+            "type" : "string",
+            "example" : "add"
+          },
+          "opX" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "opY" : {
+            "type" : "number",
+            "example" : 2
+          },
+          "result" : {
+            "type" : "number",
+            "example" : 42
+          }
+        }
+      }
+    }
+  }
+}
