@@ -63,7 +63,7 @@
     "/sub" : {
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "subtract two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -75,7 +75,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return difference",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -93,7 +93,7 @@
     "/mul" : {
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "multiply two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -105,7 +105,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return product",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -123,7 +123,7 @@
     "/div" : {
       "post" : {
         "tags" : [ "users" ],
-        "summary" : "add two numbers in body",
+        "summary" : "divide two numbers in body",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -135,7 +135,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "return sum",
+            "description" : "return quotient",
             "content" : {
               "application/json" : {
                 "schema" : {
